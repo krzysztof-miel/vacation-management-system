@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: vacation-management
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/vacation_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+  security:
+    user:
+      name: admin
+      password: password
+
+logging:
+  level:
+    com.company.vacation: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+
+# JWT Configuration
+jwt:
+  secret: mySecretKey123456789012345678901234567890mySecretKey123456789012345678901234567890
+  expiration: 86400000 # 24 hours in milliseconds
